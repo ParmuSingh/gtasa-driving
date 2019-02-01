@@ -78,15 +78,15 @@ def straight():
 
 def left():
     PressKey(A)
-    # ReleaseKey(W)
+    # ReleaseKey(W) # this was commented
     ReleaseKey(D)
-    # ReleaseKey(A)
+    # ReleaseKey(A) # this was commented
 
 def right():
     PressKey(D)
     ReleaseKey(A)
-    # ReleaseKey(W)
-    # ReleaseKey(D)
+    # ReleaseKey(W) # this was commented
+    # ReleaseKey(D) # this was commented
 
 def slow_ya_roll():
     ReleaseKey(W)
