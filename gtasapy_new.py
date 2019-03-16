@@ -17,7 +17,7 @@ from coco_object_detection import ObjectDetection
 
 real_height = 420.0 # experimental value
 focal_length = 10.0 # experimental value
-brain_ON = True
+brain_ON = False
 
 objectDetection = ObjectDetection()
 objectDetection.initialize()
@@ -31,7 +31,6 @@ for i in list(range(4))[::-1]:
 time_difference = time.time()
 
 while True:
-	# ret, image_np = cap.read()
 
 	# FOR GTA-SA
 	game_screen = np.asarray(ImageGrab.grab(bbox=(1, 35, 640, 420)))
@@ -61,8 +60,9 @@ while True:
 	# image_np = cv2.resize(image_np, (640, 420))
 
 	processed_frame, edgy_image, lines = process_img(game_screen)
-	if brain_ON:
-		try:
+	try:
+		l1, l2, m1,m2 = draw_lanes(processed_frame,lines)
+		if brain_ON:
 			# if distance < 20.0: # 40.0 before
 			# 	ReleaseKey(W)
 			# 	PressKey(S)
@@ -70,7 +70,6 @@ while True:
 			# 	PressKey(W)
 			# 	ReleaseKey(S)
 
-			l1, l2, m1,m2 = draw_lanes(processed_frame,lines)
 			print("slope1 = ", m1)
 			print("slope2 = ", m2)
 			straight()
@@ -94,18 +93,18 @@ while True:
 			# 		ReleaseKey(W)
 
 
-		except Exception as e:
-			print("error in brain : ", str(e))
-			pass
+	except Exception as e:
+		print("error in brain : ", str(e))
+		pass
 
-		cv2.imshow('object detection', image_with_detections)
-		# FOR GTA-SA
-		cv2.imshow('process_img', cv2.resize(edgy_image, (640,420)))
-		# FOR GTA V
-		# cv2.imshow('process_img', cv2.resize(edgy_image, (800,600)))
-		if cv2.waitKey(25) & 0xFF == ord('q'):
-			cv2.destroyAllWindows()
-			break
-		elif cv2.waitKey(25) & 0xFF == ord('b'):
-			brain_ON = not brain_ON
-			print("b pressed.")
+	cv2.imshow('object detection', image_with_detections)
+	# FOR GTA-SA
+	cv2.imshow('process_img', cv2.resize(edgy_image, (640,420)))
+	# FOR GTA V
+	# cv2.imshow('process_img', cv2.resize(edgy_image, (800,600)))
+	if cv2.waitKey(25) & 0xFF == ord('q'):
+		cv2.destroyAllWindows()
+		break
+	elif cv2.waitKey(25) & 0xFF == ord('b'):
+		brain_ON = not brain_ON
+		print("b pressed.")

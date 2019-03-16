@@ -5,7 +5,7 @@ import math
 import os
 import six.moves.urllib as urllib
 import sys
-sys.path.insert(0, "E:/workspace_py/object_detection")
+sys.path.insert(0, "E:/workspace_py/gtasa_driving/object_detection")
 import tarfile
 import tensorflow as tf
 import zipfile
@@ -37,15 +37,17 @@ class ObjectDetection:
 		# By default we use an "SSD with Mobilenet" model here. See the [detection model zoo](https://github.com/tensorflow/models/blob/master/object_detection/g3doc/detection_model_zoo.md) for a list of other models that can be run out-of-the-box with varying speeds and accuracies.
 
 		# What model to download.
+		self.PROJECT_BASE = "E:/workspace_py/gtasa_driving/"
+
 		self.MODEL_NAME = 'ssd_mobilenet_v1_coco_11_06_2017' # model name.
 		self.MODEL_FILE = self.MODEL_NAME + '.tar.gz'
 		self.DOWNLOAD_BASE = 'http://download.tensorflow.org/models/object_detection/'
 
 		# Path to frozen detection graph. This is the actual model that is used for the object detection.
-		self.PATH_TO_CKPT = self.MODEL_NAME + '/frozen_inference_graph.pb'
+		self.PATH_TO_CKPT = self.PROJECT_BASE + self.MODEL_NAME + '/frozen_inference_graph.pb'
 
 		# List of the strings that is used to add correct label for each box.
-		self.PATH_TO_LABELS = os.path.join('object_detection/data', 'mscoco_label_map.pbtxt')
+		self.PATH_TO_LABELS = os.path.join(self.PROJECT_BASE + 'object_detection/data', 'mscoco_label_map.pbtxt')
 
 		self.NUM_CLASSES = 90
 
@@ -130,6 +132,20 @@ class ObjectDetection:
 				  use_normalized_coordinates=True,
 				  line_thickness=2)
 			return self.image
+		except:
+			pass
+
+	def visualize_new_image(self, image):
+		try:
+			vis_util.visualize_boxes_and_labels_on_image_array(
+				  image,
+				  np.squeeze(self.boxes),
+				  np.squeeze(self.classes).astype(np.int32),
+				  np.squeeze(self.scores),
+				  self.category_index,
+				  use_normalized_coordinates=True,
+				  line_thickness=2)
+			return image
 		except:
 			pass
 

@@ -9,7 +9,7 @@ def draw_lanes(img, lines, color=[0, 255, 255], thickness=3):
         # finds the maximum y value for a lane marker 
         # (since we cannot assume the horizon will always be at the same point.)
 
-        ys = []  
+        ys = []     
         for i in lines:
             for ii in i:
                 ys += [ii[1],ii[3]]
