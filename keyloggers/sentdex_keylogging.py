@@ -41,7 +41,7 @@ def main():
     for i in list(range(6))[::-1]:
         print(i+1)
         time.sleep(1)
-
+    print("data collection started..")
 
     paused = False
     while(True):
