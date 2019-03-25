@@ -24,7 +24,7 @@ def keys_to_output(keys):
     return output
 
 
-file_path = "../data/version4/batch2/"
+file_path = "../data/version4/batch1/"
 file_name = 'training_data.npy'
 
 file = file_path + file_name
