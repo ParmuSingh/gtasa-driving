@@ -1,0 +1,2 @@
+model_checkpoint_path: "E:\\workspace_py\\gtasa_driving\\model4\\v0.3\\saved_model\\gtasa_driving_model-b1_to_b8_test_model_round2.model"
+all_model_checkpoint_paths: "E:\\workspace_py\\gtasa_driving\\model4\\v0.3\\saved_model\\gtasa_driving_model-b1_to_b8_test_model_round2.model"

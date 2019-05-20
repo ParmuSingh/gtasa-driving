@@ -1,0 +1,2 @@
+model_checkpoint_path: "E:\\workspace_py\\gtasa_driving\\model4\\v0.3\\model_alexnet-3060"
+all_model_checkpoint_paths: "E:\\workspace_py\\gtasa_driving\\model4\\v0.3\\model_alexnet-3060"
