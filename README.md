@@ -1,5 +1,7 @@
 # gtasa-driving
 
+demo: https://www.youtube.com/watch?v=f0EtcnwfhTk
+
 **FINALLY MAKING THIS REPO PUBLIC**
 
 This is an Agent that can drive inside GTA San Andreas just by looking at the game frames. There are no other inputs. Its in a very early stage and the repo might look a little cluttered. I've also provided the trained model. Right now, it works without traffic.
